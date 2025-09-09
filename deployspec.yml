@@ -15,6 +15,6 @@ phases:
           --job-update "{
               \"Command\": {
                   \"Name\": \"glueetl\",
-                  \"ScriptLocation\": \"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/glue_job_package.zip\"
+                  \"ScriptLocation\": \"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/glue_etl.py\"
               }
           }"

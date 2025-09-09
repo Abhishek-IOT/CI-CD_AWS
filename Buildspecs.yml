@@ -8,10 +8,5 @@ env:
 phases:
   build:
     commands:
-      - echo "Zipping Glue script..."
-      - zip glue_job_package.zip glue_etl.py
-      - echo "Uploading to S3..."
-      - aws s3 cp glue_job_package.zip s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/glue_job_package.zip
-artifacts:
-  files:
-    - glue_job_package.zip
+      - echo "Uploading Glue script to artifact bucket..."
+      - aws s3 cp glue_etl.py s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/glue_etl.py
