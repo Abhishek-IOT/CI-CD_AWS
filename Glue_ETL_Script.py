@@ -11,13 +11,13 @@ spark = glueContext.spark_session
 job = Job(glueContext)
 job.init(args['JOB_NAME'], args)
 
-# Read data from input S3
-df = spark.read.option("header", "true").csv("s3://input-bucket/data/")
+# ✅ Read CSV files from input folder
+df = spark.read.option("header", "true").csv("s3://aws-glue-assets-640958509818-us-east-1/input/")
 
-# Simple transformation: select only 2 columns
+# ✅ Example transformation: select only id and name
 df = df.select("id", "name")
 
-# Write to output S3
-df.write.mode("overwrite").parquet("s3://output-bucket/processed/")
+# ✅ Write to processed/output folder as parquet
+df.write.mode("overwrite").parquet("s3://aws-glue-assets-640958509818-us-east-1/output/")
 
 job.commit()
