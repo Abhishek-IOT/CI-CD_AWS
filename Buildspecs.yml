@@ -1,0 +1,17 @@
+version: 0.2
+
+env:
+  variables:
+    ARTIFACT_BUCKET: aws-glue-assets-640958509818-us-east-1
+    ARTIFACT_PREFIX: glue
+
+phases:
+  build:
+    commands:
+      - echo "Zipping Glue script..."
+      - zip glue_job_package.zip glue_etl.py
+      - echo "Uploading to S3..."
+      - aws s3 cp glue_job_package.zip s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/glue_job_package.zip
+artifacts:
+  files:
+    - glue_job_package.zip
