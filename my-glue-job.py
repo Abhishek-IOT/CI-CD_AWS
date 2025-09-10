@@ -19,5 +19,6 @@ df = df.select("id", "name")
 
 # ✅ Write to processed/output folder as parquet
 df.write.mode("overwrite").parquet("s3://aws-glue-assets-640958509818-us-east-1/output/")
-
+print("Job has been executed Successfully")
 job.commit()
+
