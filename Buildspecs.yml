@@ -9,6 +9,7 @@ phases:
   build:
     commands:
       - echo "Uploading Glue script to artifact bucket..."
-      - aws s3 cp glue_etl.py s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/my-glue-job.py
+      - aws s3 cp my-glue-job.py s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/my-glue-job.py
+
 
 
