@@ -1,28 +1,5 @@
 version: 0.2
-
-env:
-  variables:
-    ARTIFACT_BUCKET: aws-glue-assets-640958509818-us-east-1   # S3 bucket where your Glue script is stored
-    ARTIFACT_PREFIX: scripts                                      # Folder path prefix inside S3
-    GLUE_JOB_NAME: Raw2Refined                                 # Existing Glue job name
-    GLUE_ROLE_ARN: arn:aws:iam::640958509818:role/Glue_S3_msk_Access  # IAM role used by Glue job
-
 phases:
   build:
     commands:
-      - echo "=============================="
-      - echo "Starting Glue Job Update..."
-      - echo "Job Name: $GLUE_JOB_NAME"
-      - echo "Script: s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/my-glue-job.py"
-      - echo "=============================="
-
-      # Optional: verify if job exists (good debug step)
-      - aws glue get-job --job-name "$GLUE_JOB_NAME"
-
-      # Now update the Glue job definition
-      - >
-        aws glue update-job \
-          --job-name "$GLUE_JOB_NAME" \
-          --job-update "{\"Role\": \"$GLUE_ROLE_ARN\", \"Command\": {\"Name\": \"glueetl\", \"ScriptLocation\": \"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/my-glue-job.py\"}}"
-
-      - echo "Glue job updated successfully!"
+      - aws glue update-job --job-name "Raw2Refined" --job-update '{"Command":{"ScriptLocation":"s3://aws-glue-assets-640958509818-us-east-1/scripts/RAW_to_REFINED.py"}}'
