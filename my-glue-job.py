@@ -28,6 +28,3 @@ EvaluateDataQuality().process_rows(frame=AmazonS3_node1759213108259, ruleset=DEF
 AmazonS3_node1759213798527 = glueContext.write_dynamic_frame.from_options(frame=AmazonS3_node1759213108259, connection_type="s3", format="glueparquet", connection_options={"path": "s3://aws-glue-assets-640958509818-us-east-1/dags/", "partitionKeys": []}, format_options={"compression": "snappy"}, transformation_ctx="AmazonS3_node1759213798527")
 
 job.commit()
-
-
-
