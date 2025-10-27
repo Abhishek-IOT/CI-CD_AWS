@@ -7,7 +7,8 @@ phases:
           "Role": "arn:aws:iam::640958509818:role/Glue_S3_msk_Access",
           "Command": {
             "Name": "glueetl",
-            "ScriptLocation": "s3://aws-glue-assets-640958509818-us-east-1/scripts/my-glue-job.py",
+            "ScriptLocation": "s3://aws-glue-assets-640958509818-us-east-1/scripts/RAW_TO_REFINED.py",
             "PythonVersion": "3"
           }
         }'
+
