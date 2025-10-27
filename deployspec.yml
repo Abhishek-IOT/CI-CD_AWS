@@ -12,9 +12,10 @@ phases:
       - echo "Deploying new Glue script..."
       - aws glue update-job \
           --job-name $GLUE_JOB_NAME \
-          --job-update "{
+          --job-update \"{
               \"Command\": {
                   \"Name\": \"glueetl\",
                   \"ScriptLocation\": \"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/my-glue-job.py\"
               }
           }"
+
