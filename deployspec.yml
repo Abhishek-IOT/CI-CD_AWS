@@ -9,13 +9,9 @@ env:
 phases:
   build:
     commands:
-      - echo "Deploying new Glue script..."
-      - |
-        aws glue update-job \
-          --job-name "$GLUE_JOB_NAME" \
-          --job-update '{
-            "Command": {
-              "Name": "glueetl",
-              "ScriptLocation": "s3://'"$ARTIFACT_BUCKET"'/'"$ARTIFACT_PREFIX"'/my-glue-job.py"
-            }
-          }'
+      - echo "Updating Glue job..."
+      - aws glue update-job \
+          --job-name $GLUE_JOB_NAME \
+          --job-update "{\
+              \"Command\": {\"Name\": \"glueetl\", \"ScriptLocation\": \"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/my-glue-job.py\"}\
+          }"
