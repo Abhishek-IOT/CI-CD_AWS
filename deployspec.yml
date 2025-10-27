@@ -12,7 +12,8 @@ phases:
     commands:
       - echo "Deploying new Glue script..."
       - echo "Updating Glue job: $GLUE_JOB_NAME with new script"
-      - aws glue update-job \
+      - |
+        aws glue update-job \
           --job-name "$GLUE_JOB_NAME" \
           --job-update '{
             "Role": "'"$GLUE_ROLE_ARN"'",
