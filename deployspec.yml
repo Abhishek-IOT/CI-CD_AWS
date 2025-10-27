@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     ARTIFACT_BUCKET: aws-glue-assets-640958509818-us-east-1
-    ARTIFACT_PREFIX: glue
+    ARTIFACT_PREFIX: scripts
     GLUE_JOB_NAME: Raw2Refined
 
 phases:
@@ -12,10 +12,11 @@ phases:
       - echo "Deploying new Glue script..."
       - aws glue update-job \
           --job-name $GLUE_JOB_NAME \
-          --job-update \"{
+          --job-update "{
               \"Command\": {
                   \"Name\": \"glueetl\",
-                  \"ScriptLocation\": \"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/my-glue-job.py\"
+                  \"ScriptLocation\": \"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/glue_etl.py\"
               }
           }"
+
 
