@@ -14,4 +14,10 @@ phases:
       - echo "Updating Glue job: $GLUE_JOB_NAME with new script"
       - aws glue update-job \
           --job-name "$GLUE_JOB_NAME" \
-          --job-update "{\"Role\":\"$GLUE_ROLE_ARN\",\"Command\":{\"Name\":\"glueetl\",\"ScriptLocation\":\"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/my-glue-job.py\"}}"
+          --job-update '{
+            "Role": "'"$GLUE_ROLE_ARN"'",
+            "Command": {
+              "Name": "glueetl",
+              "ScriptLocation": "s3://'"$ARTIFACT_BUCKET"'/'"$ARTIFACT_PREFIX"'/my-glue-job.py"
+            }
+          }'
