@@ -3,12 +3,4 @@ phases:
   build:
     commands:
       - |
-        aws glue update-job --job-name "Raw2Refined" --job-update '{
-          "Role": "Glue_S3_msk_Access",
-          "Command": {
-            "Name": "glueetl",
-            "ScriptLocation": "s3://aws-glue-assets-640958509818-us-east-1/scripts/my-glue-job.py",
-            "PythonVersion": "3"
-          }
-        }'
-
+        aws glue update-job --job-name "Raw2Refined" --job-update "{\"Role\": \"Glue_S3_msk_Access\", \"Command\": {\"Name\": \"glueetl\", \"ScriptLocation\": \"s3://aws-glue-assets-640958509818-us-east-1/scripts/my-glue-job.py\", \"PythonVersion\": \"3\"}}"
