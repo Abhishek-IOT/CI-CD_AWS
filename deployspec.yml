@@ -4,7 +4,7 @@ env:
   variables:
     ARTIFACT_BUCKET: aws-glue-assets-640958509818-us-east-1
     ARTIFACT_PREFIX: scripts
-    GLUE_JOB_NAME: my-glue-job
+    GLUE_JOB_NAME: Raw2Refined
 
 phases:
   build:
@@ -18,6 +18,5 @@ phases:
                   \"ScriptLocation\": \"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/glue_etl.py\"
               }
           }"
-
 
 
