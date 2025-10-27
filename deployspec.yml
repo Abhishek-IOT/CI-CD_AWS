@@ -2,4 +2,5 @@ version: 0.2
 phases:
   build:
     commands:
-      - aws glue update-job --job-name "Raw2Refined" --job-update '{"Command":{"ScriptLocation":"s3://aws-glue-assets-640958509818-us-east-1/scripts/RAW_to_REFINED.py"}}'
+      - aws glue update-job --job-name "Raw2Refined" --job-update '{"Command":{"ScriptLocation":"s3://aws-glue-assets-640958509818-us-east-1/scripts/RAW_TO_REFINED.py"}}'
+
