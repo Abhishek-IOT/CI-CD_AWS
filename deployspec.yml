@@ -16,7 +16,8 @@ phases:
           --job-update "{
               \"Command\": {
                   \"Name\": \"glueetl\",
-                  \"ScriptLocation\": \"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/my-glue-job.py\"
+                  \"ScriptLocation\": \"s3://$ARTIFACT_BUCKET//$ARTIFACT_PREFIX//my-glue-job.py\"
               }
           }"
+
 
