@@ -5,18 +5,13 @@ env:
     ARTIFACT_BUCKET: aws-glue-assets-640958509818-us-east-1
     ARTIFACT_PREFIX: glue
     GLUE_JOB_NAME: Raw2Refined
+    GLUE_ROLE_ARN: arn:aws:iam::640958509818:role/Glue_S3_msk_Access
 
 phases:
   build:
     commands:
       - echo "Deploying new Glue script..."
-      - |
-        aws glue update-job \
+      - echo "Updating Glue job: $GLUE_JOB_NAME with new script"
+      - aws glue update-job \
           --job-name "$GLUE_JOB_NAME" \
-          --job-update '{
-            "Command": {
-              "Name": "glueetl",
-              "ScriptLocation": "s3://'"$ARTIFACT_BUCKET"'/'"$ARTIFACT_PREFIX"'/my-glue-job.py"
-            }
-          }'
-
+          --job-update "{\"Role\":\"$GLUE_ROLE_ARN\",\"Command\":{\"Name\":\"glueetl\",\"ScriptLocation\":\"s3://$ARTIFACT_BUCKET/$ARTIFACT_PREFIX/my-glue-job.py\"}}"
