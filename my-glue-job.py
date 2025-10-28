@@ -21,10 +21,11 @@ DEFAULT_DATA_QUALITY_RULESET = """
 """
 
 # Script generated for node Amazon S3
-AmazonS3_node1759213108259 = glueContext.create_dynamic_frame.from_options(format_options={"multiLine": "false"}, connection_type="s3", format="json", connection_options={"paths": ["s3://ridestreamlakehouse/2025/09/"], "recurse": True}, transformation_ctx="AmazonS3_node1759213108259")
+AmazonS3_node1759213108259 = glueContext.create_dynamic_frame.from_options(format_options={"multiLine": "false"}, connection_type="s3", format="json", connection_options={"paths": ["s3://ridestreamlakehouse/2025/"], "recurse": True}, transformation_ctx="AmazonS3_node1759213108259")
 
 # Script generated for node Amazon S3
 EvaluateDataQuality().process_rows(frame=AmazonS3_node1759213108259, ruleset=DEFAULT_DATA_QUALITY_RULESET, publishing_options={"dataQualityEvaluationContext": "EvaluateDataQuality_node1759211519266", "enableDataQualityResultsPublishing": True}, additional_options={"dataQualityResultsPublishing.strategy": "BEST_EFFORT", "observations.scope": "ALL"})
 AmazonS3_node1759213798527 = glueContext.write_dynamic_frame.from_options(frame=AmazonS3_node1759213108259, connection_type="s3", format="glueparquet", connection_options={"path": "s3://aws-glue-assets-640958509818-us-east-1/dags/", "partitionKeys": []}, format_options={"compression": "snappy"}, transformation_ctx="AmazonS3_node1759213798527")
 
 job.commit()
+
